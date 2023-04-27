@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-5">
+    <h2 class="mb-4">Register Table Tennis Score</h2>
+    <form asp-controller="Home" asp-action="RegisterScore" method="post">
+        <div class="form-group">
+            <label class="form-label" for="player1">Player 1:</label>
+            <input type="text" class="form-control" id="player1" name="Player1" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="player2">Player 2:</label>
+            <input type="text" class="form-control" id="player2" name="Player2" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="score1">Score Player 1:</label>
+            <input type="number" class="form-control" id="score1" name="score1" min="0" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="score2">Score Player 2:</label>
+            <input type="number" class="form-control" id="score2" name="score2" min="0" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
