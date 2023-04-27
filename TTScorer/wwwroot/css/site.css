@@ -22,7 +22,7 @@ body {
 }
 
  body.dark-mode {
-   background-color: black;
+   background-color: #121212;
    color: white;
  }
 
@@ -109,10 +109,10 @@ input:checked + .slider:before {
 }
 
 .navbar.navbar-light.bg-white.dark-mode {
-  background-color: #black !important; /* You can change this color to your preference */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #616161 !important; /* You can change this color to your preference */
+  border-bottom: 1px solid #f2f2f2;
 }
 
 .navbar.navbar-light.bg-white.dark-mode .nav-link {
-  color: #cad5e2;
+  color: #f7f7f7;
 }
