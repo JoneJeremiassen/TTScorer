@@ -1,2 +1,3 @@
-
-TTScorer/obj/Debug
+TTScorer/obj
+TTScorer/bin
+.idea
