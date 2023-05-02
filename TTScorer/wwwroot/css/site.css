@@ -26,6 +26,12 @@ body {
    color: white;
  }
 
+body.dark-mode .form-control {
+  background-color: #333333; /* Adjust the color to your preference */
+  color: white;
+  border-color: #444444; /* Adjust the border color to your preference */
+}
+
 .container {
   max-width: 500px;
 }
