@@ -113,12 +113,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-.navbar.navbar-light.bg-white.dark-mode {
-  background-color: #616161 !important; /* You can change this color to your preference */
-  border-bottom: 1px solid #f2f2f2;
-}
-
-.navbar.navbar-light.bg-white.dark-mode .nav-link {
-  color: #f7f7f7;
-}
