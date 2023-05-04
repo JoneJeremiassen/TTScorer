@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TTScorer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TTScorer.Controllers;
 
@@ -20,9 +21,10 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Results()
+    public async Task<IActionResult> Results()
     {
-        return View();
+        var recentMatches = await _dbContext.TableTennisScores.OrderByDescending(m => m.Id).Take(10).ToListAsync();
+        return View(recentMatches);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
