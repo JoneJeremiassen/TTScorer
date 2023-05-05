@@ -4,6 +4,10 @@
     ViewData["Title"] = "Results";
 }
 
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 <h2>Recent Matches</h2>
 
 <table class="table">
@@ -19,8 +23,16 @@
     @foreach (var match in Model)
     {
         <tr>
-            <td>@match.Player1</td>
-            <td>@match.Player2</td>
+            @if (match.Score1 > match.Score2) 
+                {
+                <td>@match.Player1 <i class="fa fa-trophy" /></td>
+                <td>@match.Player2</td>
+                }
+            else
+                {
+                <td>@match.Player1 </td>
+                <td>@match.Player2 <i class="fa fa-trophy" /></td> 
+                }
             <td>@match.Score1</td>
             <td>@match.Score2</td>
         </tr>
