@@ -23,7 +23,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Results()
     {
-        var recentMatches = await _dbContext.TableTennisScores.OrderByDescending(m => m.Id).Take(10).ToListAsync();
+        var recentMatches = await _dbContext.TableTennisScores.OrderByDescending(m => m.Id).ToListAsync();
         return View(recentMatches);
     }
 
