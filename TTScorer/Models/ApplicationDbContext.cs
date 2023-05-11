@@ -9,5 +9,7 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<TableTennisScorer> TableTennisScores { get; set; }
+    public DbSet<Player> Players { get; set; }
+    public DbSet<Match> Matches { get; set; }
+    public DbSet<Score> Scores { get; set; }
 }

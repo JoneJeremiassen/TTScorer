@@ -1,0 +1,12 @@
+@model TTScorer.Models.Player;
+
+@{
+  ViewData["Title"] = "Player Details";
+}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Player Details</h2>
+  <div>Name:</div>
+  <div>@Model.Name</div>
+  <input type="button" value="Delete player" onclick="location.href='@Url.Action("DeletePlayer", "Player", new {playerId = @Model.Id})'" />   
+</div>

@@ -18,12 +18,18 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var players = _dbContext.Players.ToList();
+        return View(players);
     }
 
     public async Task<IActionResult> Results()
     {
-        var recentMatches = await _dbContext.TableTennisScores.OrderByDescending(m => m.Id).ToListAsync();
+        var recentMatches = await _dbContext.Matches
+            .Include(m => m.Scores)
+            .ThenInclude(p => p.Player)
+            .Take(10)
+            .ToListAsync();
+
         return View(recentMatches);
     }
 
@@ -34,12 +40,40 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> RegisterScore(TableTennisScorer scoreEntry)
+    public async Task<IActionResult> RegisterScore(ScoreEntryViewModel scoreEntry)
     {
-        if (!ModelState.IsValid) return View("Index", scoreEntry);
-        
-        _dbContext.TableTennisScores.Add(scoreEntry);
-        await _dbContext.SaveChangesAsync();
+        Player player1 = _dbContext.Players.Find(scoreEntry.Player1Id);
+        Player player2 = _dbContext.Players.Find(scoreEntry.Player2Id);
+
+        Match newMatch = new Match()
+        {
+            MatchDate = DateTime.Now
+        };
+
+        _dbContext.Matches.Add(newMatch);
+        _dbContext.SaveChanges();
+
+        var matchId = _dbContext.Matches.Find(newMatch.Id);
+
+        Score player1Score = new Score()
+        {
+            Match = matchId,
+            Player = player1,
+            Points = scoreEntry.Player1Score
+        };
+
+        Score player2Score = new Score()
+        {
+            Match = matchId,
+            Player = player2,
+            Points = scoreEntry.Player2Score
+        };
+
+        _dbContext.Scores.Add(player1Score);
+        _dbContext.Scores.Add(player2Score);
+        _dbContext.SaveChanges();
+
+        if (!ModelState.IsValid) return View("Index");
 
         return RedirectToAction("Index");
     }
