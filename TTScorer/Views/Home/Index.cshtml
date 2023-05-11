@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TTScorer.Models.Player>;
+
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -7,21 +9,46 @@
 <div class="container mt-5">
     <h2 class="mb-4">Experis Table Tennis Scorer</h2>
     <form asp-controller="Home" asp-action="RegisterScore" method="post">
-        <div class="form-group">
-            <label class="form-label" for="player1">Player 1:</label>
-            <input type="text" class="form-control" id="player1" name="Player1" required>
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <label class="form-label" for="player1id">Player 1:</label>
+                </div>
+                <div class="row">
+                    <select value="" id="player1id" name="player1id">
+                        @foreach(var player in Model)
+                        {
+                            <option value=@player.Id>@player.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <label class="form-label" for="player2id">Player 2:</label>
+                </div>
+                <div class="row">
+                    <select id="player2id" name="player2id">
+                        @foreach(var player in Model)
+                        {
+                            <option value=@player.Id>@player.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="player2">Player 2:</label>
-            <input type="text" class="form-control" id="player2" name="Player2" required>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="score1">Score Player 1:</label>
-            <input type="number" class="form-control" id="score1" name="score1" min="0" required>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="score2">Score Player 2:</label>
-            <input type="number" class="form-control" id="score2" name="score2" min="0" required>
+        <div class="row">
+            <div class="col-sm">
+                <label class="form-label">Score</label>
+            </div>
+            <div class="col-sm">
+                <input type="number" class="form-control" id="player1score" name="player1score" min="0" required>
+            </div>
+            <div class="col-sm">
+                <input type="number" class="form-control" id="player2score" name="player2score" min="0" required>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

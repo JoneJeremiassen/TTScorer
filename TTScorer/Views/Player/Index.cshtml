@@ -1,0 +1,16 @@
+@model IEnumerable<TTScorer.Models.Player>;
+
+@{
+  ViewData["Title"] = "Players";
+}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Players</h2>
+  <div>
+    @foreach(var player in Model)
+    {
+      <a class="nav-link text-dark" asp-controller="Player" asp-action="PlayerDetails" asp-route-playerId=@player.Id>@player.Name</a>
+    }
+  </div>
+  <input type="button" value="Create player" onclick="location.href='@Url.Action("CreatePlayer", "Player")'" />
+</div>
