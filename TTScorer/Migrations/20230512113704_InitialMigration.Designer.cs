@@ -12,8 +12,8 @@ using TTScorer.Models;
 namespace TTScorer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230511085124_AddTables")]
-    partial class AddTables
+    [Migration("20230512113704_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
